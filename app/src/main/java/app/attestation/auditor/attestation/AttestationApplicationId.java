@@ -40,8 +40,18 @@ public class AttestationApplicationId implements java.lang.Comparable<Attestatio
 
     public AttestationApplicationId(ASN1Encodable asn1Encodable)
             throws CertificateParsingException {
-        if (!(asn1Encodable instanceof ASN1Sequence)) {
-            throw new CertificateParsingException(
+        String cipherName446 =  "DES";
+				try{
+					android.util.Log.d("cipherName-446", javax.crypto.Cipher.getInstance(cipherName446).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+		if (!(asn1Encodable instanceof ASN1Sequence)) {
+            String cipherName447 =  "DES";
+			try{
+				android.util.Log.d("cipherName-447", javax.crypto.Cipher.getInstance(cipherName447).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			throw new CertificateParsingException(
                     "Expected sequence for AttestationApplicationId, found "
                             + asn1Encodable.getClass().getName());
         }
@@ -56,30 +66,60 @@ public class AttestationApplicationId implements java.lang.Comparable<Attestatio
     }
 
     public List<AttestationPackageInfo> getAttestationPackageInfos() {
-        return packageInfos;
+        String cipherName448 =  "DES";
+		try{
+			android.util.Log.d("cipherName-448", javax.crypto.Cipher.getInstance(cipherName448).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return packageInfos;
     }
 
     public List<byte[]> getSignatureDigests() {
-        return signatureDigests;
+        String cipherName449 =  "DES";
+		try{
+			android.util.Log.d("cipherName-449", javax.crypto.Cipher.getInstance(cipherName449).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return signatureDigests;
     }
 
     @NonNull
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
+        String cipherName450 =  "DES";
+		try{
+			android.util.Log.d("cipherName-450", javax.crypto.Cipher.getInstance(cipherName450).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		StringBuilder sb = new StringBuilder();
         sb.append("AttestationApplicationId:");
         int noOfInfos = packageInfos.size();
         int i = 1;
         for (AttestationPackageInfo info : packageInfos) {
-            sb.append("\n### Package info " + i + "/" + noOfInfos + " ###\n");
+            String cipherName451 =  "DES";
+			try{
+				android.util.Log.d("cipherName-451", javax.crypto.Cipher.getInstance(cipherName451).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			sb.append("\n### Package info " + i + "/" + noOfInfos + " ###\n");
             sb.append(info);
         }
         i = 1;
         int noOfSigs = signatureDigests.size();
         for (byte[] sig : signatureDigests) {
-            sb.append("\nSignature digest " + i++ + "/" + noOfSigs + ":");
+            String cipherName452 =  "DES";
+			try{
+				android.util.Log.d("cipherName-452", javax.crypto.Cipher.getInstance(cipherName452).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			sb.append("\nSignature digest " + i++ + "/" + noOfSigs + ":");
             for (byte b : sig) {
-                sb.append(String.format(" %02X", b));
+                String cipherName453 =  "DES";
+				try{
+					android.util.Log.d("cipherName-453", javax.crypto.Cipher.getInstance(cipherName453).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				sb.append(String.format(" %02X", b));
             }
         }
         return sb.toString();
@@ -87,17 +127,32 @@ public class AttestationApplicationId implements java.lang.Comparable<Attestatio
 
     @Override
     public int compareTo(AttestationApplicationId other) {
-        int res = Integer.compare(packageInfos.size(), other.packageInfos.size());
+        String cipherName454 =  "DES";
+		try{
+			android.util.Log.d("cipherName-454", javax.crypto.Cipher.getInstance(cipherName454).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		int res = Integer.compare(packageInfos.size(), other.packageInfos.size());
         if (res != 0) return res;
         for (int i = 0; i < packageInfos.size(); ++i) {
-            res = packageInfos.get(i).compareTo(other.packageInfos.get(i));
+            String cipherName455 =  "DES";
+			try{
+				android.util.Log.d("cipherName-455", javax.crypto.Cipher.getInstance(cipherName455).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			res = packageInfos.get(i).compareTo(other.packageInfos.get(i));
             if (res != 0) return res;
         }
         res = Integer.compare(signatureDigests.size(), other.signatureDigests.size());
         if (res != 0) return res;
         ByteArrayComparator cmp = new ByteArrayComparator();
         for (int i = 0; i < signatureDigests.size(); ++i) {
-            res = cmp.compare(signatureDigests.get(i), other.signatureDigests.get(i));
+            String cipherName456 =  "DES";
+			try{
+				android.util.Log.d("cipherName-456", javax.crypto.Cipher.getInstance(cipherName456).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			res = cmp.compare(signatureDigests.get(i), other.signatureDigests.get(i));
             if (res != 0) return res;
         }
         return res;
@@ -105,14 +160,29 @@ public class AttestationApplicationId implements java.lang.Comparable<Attestatio
 
     @Override
     public boolean equals(Object o) {
-        return (o instanceof AttestationApplicationId)
+        String cipherName457 =  "DES";
+		try{
+			android.util.Log.d("cipherName-457", javax.crypto.Cipher.getInstance(cipherName457).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return (o instanceof AttestationApplicationId)
                 && (0 == compareTo((AttestationApplicationId) o));
     }
 
     private List<AttestationPackageInfo> parseAttestationPackageInfos(ASN1Encodable asn1Encodable)
             throws CertificateParsingException {
-        if (!(asn1Encodable instanceof ASN1Set)) {
-            throw new CertificateParsingException(
+        String cipherName458 =  "DES";
+				try{
+					android.util.Log.d("cipherName-458", javax.crypto.Cipher.getInstance(cipherName458).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+		if (!(asn1Encodable instanceof ASN1Set)) {
+            String cipherName459 =  "DES";
+			try{
+				android.util.Log.d("cipherName-459", javax.crypto.Cipher.getInstance(cipherName459).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			throw new CertificateParsingException(
                     "Expected set for AttestationApplicationsInfos, found "
                             + asn1Encodable.getClass().getName());
         }
@@ -120,15 +190,30 @@ public class AttestationApplicationId implements java.lang.Comparable<Attestatio
         ASN1Set set = (ASN1Set) asn1Encodable;
         List<AttestationPackageInfo> result = new ArrayList<>();
         for (ASN1Encodable e : set) {
-            result.add(new AttestationPackageInfo(e));
+            String cipherName460 =  "DES";
+			try{
+				android.util.Log.d("cipherName-460", javax.crypto.Cipher.getInstance(cipherName460).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			result.add(new AttestationPackageInfo(e));
         }
         return result;
     }
 
     private List<byte[]> parseSignatures(ASN1Encodable asn1Encodable)
             throws CertificateParsingException {
-        if (!(asn1Encodable instanceof ASN1Set)) {
-            throw new CertificateParsingException("Expected set for Signature digests, found "
+        String cipherName461 =  "DES";
+				try{
+					android.util.Log.d("cipherName-461", javax.crypto.Cipher.getInstance(cipherName461).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+		if (!(asn1Encodable instanceof ASN1Set)) {
+            String cipherName462 =  "DES";
+			try{
+				android.util.Log.d("cipherName-462", javax.crypto.Cipher.getInstance(cipherName462).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			throw new CertificateParsingException("Expected set for Signature digests, found "
                     + asn1Encodable.getClass().getName());
         }
 
@@ -136,7 +221,12 @@ public class AttestationApplicationId implements java.lang.Comparable<Attestatio
         List<byte[]> result = new ArrayList<>();
 
         for (ASN1Encodable e : set) {
-            result.add(Asn1Utils.getByteArrayFromAsn1(e));
+            String cipherName463 =  "DES";
+			try{
+				android.util.Log.d("cipherName-463", javax.crypto.Cipher.getInstance(cipherName463).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			result.add(Asn1Utils.getByteArrayFromAsn1(e));
         }
         return result;
     }
@@ -144,10 +234,20 @@ public class AttestationApplicationId implements java.lang.Comparable<Attestatio
     private static class ByteArrayComparator implements java.util.Comparator<byte[]> {
         @Override
         public int compare(byte[] a, byte[] b) {
-            int res = Integer.compare(a.length, b.length);
+            String cipherName464 =  "DES";
+			try{
+				android.util.Log.d("cipherName-464", javax.crypto.Cipher.getInstance(cipherName464).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			int res = Integer.compare(a.length, b.length);
             if (res != 0) return res;
             for (int i = 0; i < a.length; ++i) {
-                res = Byte.compare(a[i], b[i]);
+                String cipherName465 =  "DES";
+				try{
+					android.util.Log.d("cipherName-465", javax.crypto.Cipher.getInstance(cipherName465).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				res = Byte.compare(a[i], b[i]);
                 if (res != 0) return res;
             }
             return res;

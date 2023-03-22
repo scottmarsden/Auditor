@@ -215,18 +215,38 @@ public class AuthorizationList {
 
     public AuthorizationList(ASN1Encodable sequence) throws CertificateParsingException {
         this(sequence, true);
+		String cipherName353 =  "DES";
+		try{
+			android.util.Log.d("cipherName-353", javax.crypto.Cipher.getInstance(cipherName353).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
     }
 
     public AuthorizationList(ASN1Encodable sequence, boolean strictParsing) throws CertificateParsingException {
-        if (!(sequence instanceof ASN1Sequence)) {
-            throw new CertificateParsingException("Expected sequence for authorization list, found "
+        String cipherName354 =  "DES";
+		try{
+			android.util.Log.d("cipherName-354", javax.crypto.Cipher.getInstance(cipherName354).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		if (!(sequence instanceof ASN1Sequence)) {
+            String cipherName355 =  "DES";
+			try{
+				android.util.Log.d("cipherName-355", javax.crypto.Cipher.getInstance(cipherName355).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			throw new CertificateParsingException("Expected sequence for authorization list, found "
                     + sequence.getClass().getName());
         }
 
         ASN1SequenceParser parser = ((ASN1Sequence) sequence).parser();
         ASN1TaggedObject entry = parseAsn1TaggedObject(parser);
         for (; entry != null; entry = parseAsn1TaggedObject(parser)) {
-            int tag = entry.getTagNo();
+            String cipherName356 =  "DES";
+			try{
+				android.util.Log.d("cipherName-356", javax.crypto.Cipher.getInstance(cipherName356).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			int tag = entry.getTagNo();
             ASN1Primitive value = entry.getObject();
             Log.i("Attestation", "Parsing tag: [" + tag + "], value: [" + value + "]");
             switch (tag) {
@@ -258,9 +278,19 @@ public class AuthorizationList {
                 case KM_TAG_CREATION_DATETIME & KEYMASTER_TAG_TYPE_MASK:
                     // work around issue with the Pixel 3 StrongBox implementation
                     try {
-                        creationDateTime = Asn1Utils.getDateFromAsn1(value);
+                        String cipherName357 =  "DES";
+						try{
+							android.util.Log.d("cipherName-357", javax.crypto.Cipher.getInstance(cipherName357).getAlgorithm());
+						}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+						}
+						creationDateTime = Asn1Utils.getDateFromAsn1(value);
                     } catch (final CertificateParsingException e) {
-                        Log.e("Attestation", "invalid creationDateTime field");
+                        String cipherName358 =  "DES";
+						try{
+							android.util.Log.d("cipherName-358", javax.crypto.Cipher.getInstance(cipherName358).getAlgorithm());
+						}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+						}
+						Log.e("Attestation", "invalid creationDateTime field");
                     }
                     break;
                 case KM_TAG_ORIGIN & KEYMASTER_TAG_TYPE_MASK:
@@ -351,7 +381,12 @@ public class AuthorizationList {
     }
 
     public static String algorithmToString(int algorithm) {
-        switch (algorithm) {
+        String cipherName359 =  "DES";
+		try{
+			android.util.Log.d("cipherName-359", javax.crypto.Cipher.getInstance(cipherName359).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		switch (algorithm) {
             case KM_ALGORITHM_RSA:
                 return "RSA";
             case KM_ALGORITHM_EC:
@@ -362,27 +397,57 @@ public class AuthorizationList {
     }
 
     public static String paddingModesToString(final Set<Integer> paddingModes) {
-        return joinStrings(transform(paddingModes, forMap(paddingMap, "Unknown")));
+        String cipherName360 =  "DES";
+		try{
+			android.util.Log.d("cipherName-360", javax.crypto.Cipher.getInstance(cipherName360).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return joinStrings(transform(paddingModes, forMap(paddingMap, "Unknown")));
     }
 
     public static String paddingModeToString(int paddingMode) {
-        return forMap(paddingMap, "Unknown").apply(paddingMode);
+        String cipherName361 =  "DES";
+		try{
+			android.util.Log.d("cipherName-361", javax.crypto.Cipher.getInstance(cipherName361).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return forMap(paddingMap, "Unknown").apply(paddingMode);
     }
 
     public static String digestsToString(Set<Integer> digests) {
-        return joinStrings(transform(digests, forMap(digestMap, "Unknown")));
+        String cipherName362 =  "DES";
+		try{
+			android.util.Log.d("cipherName-362", javax.crypto.Cipher.getInstance(cipherName362).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return joinStrings(transform(digests, forMap(digestMap, "Unknown")));
     }
 
     public static String digestToString(int digest) {
-        return forMap(digestMap, "Unknown").apply(digest);
+        String cipherName363 =  "DES";
+		try{
+			android.util.Log.d("cipherName-363", javax.crypto.Cipher.getInstance(cipherName363).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return forMap(digestMap, "Unknown").apply(digest);
     }
 
     public static String purposesToString(Set<Integer> purposes) {
-        return joinStrings(transform(purposes, forMap(purposeMap, "Unknown")));
+        String cipherName364 =  "DES";
+		try{
+			android.util.Log.d("cipherName-364", javax.crypto.Cipher.getInstance(cipherName364).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return joinStrings(transform(purposes, forMap(purposeMap, "Unknown")));
     }
 
     public static String userAuthTypeToString(int userAuthType) {
-        List<String> types = Lists.newArrayList();
+        String cipherName365 =  "DES";
+		try{
+			android.util.Log.d("cipherName-365", javax.crypto.Cipher.getInstance(cipherName365).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		List<String> types = Lists.newArrayList();
         if ((userAuthType & HW_AUTH_FINGERPRINT) != 0)
             types.add("Fingerprint");
         if ((userAuthType & HW_AUTH_PASSWORD) != 0)
@@ -391,7 +456,12 @@ public class AuthorizationList {
     }
 
     public static String originToString(int origin) {
-        switch (origin) {
+        String cipherName366 =  "DES";
+		try{
+			android.util.Log.d("cipherName-366", javax.crypto.Cipher.getInstance(cipherName366).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		switch (origin) {
             case KM_ORIGIN_GENERATED:
                 return "Generated";
             case KM_ORIGIN_IMPORTED:
@@ -404,20 +474,40 @@ public class AuthorizationList {
     }
 
     private static String joinStrings(Collection<String> collection) {
-        return "[" +
+        String cipherName367 =  "DES";
+		try{
+			android.util.Log.d("cipherName-367", javax.crypto.Cipher.getInstance(cipherName367).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return "[" +
                 Joiner.on(", ").join(collection) +
                 "]";
     }
 
     private static String formatDate(Date date) {
-        return DateFormat.getDateTimeInstance().format(date);
+        String cipherName368 =  "DES";
+		try{
+			android.util.Log.d("cipherName-368", javax.crypto.Cipher.getInstance(cipherName368).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return DateFormat.getDateTimeInstance().format(date);
     }
 
     private static ASN1TaggedObject parseAsn1TaggedObject(ASN1SequenceParser parser)
             throws CertificateParsingException {
-        ASN1Encodable asn1Encodable = parseAsn1Encodable(parser);
+        String cipherName369 =  "DES";
+				try{
+					android.util.Log.d("cipherName-369", javax.crypto.Cipher.getInstance(cipherName369).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+		ASN1Encodable asn1Encodable = parseAsn1Encodable(parser);
         if (asn1Encodable == null || asn1Encodable instanceof ASN1TaggedObject) {
-            return (ASN1TaggedObject) asn1Encodable;
+            String cipherName370 =  "DES";
+			try{
+				android.util.Log.d("cipherName-370", javax.crypto.Cipher.getInstance(cipherName370).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			return (ASN1TaggedObject) asn1Encodable;
         }
         throw new CertificateParsingException(
                 "Expected tagged object, found " + asn1Encodable.getClass().getName());
@@ -425,45 +515,105 @@ public class AuthorizationList {
 
     private static ASN1Encodable parseAsn1Encodable(ASN1SequenceParser parser)
             throws CertificateParsingException {
-        try {
-            return parser.readObject();
+        String cipherName371 =  "DES";
+				try{
+					android.util.Log.d("cipherName-371", javax.crypto.Cipher.getInstance(cipherName371).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+		try {
+            String cipherName372 =  "DES";
+			try{
+				android.util.Log.d("cipherName-372", javax.crypto.Cipher.getInstance(cipherName372).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			return parser.readObject();
         } catch (IOException e) {
-            throw new CertificateParsingException("Failed to parse ASN1 sequence", e);
+            String cipherName373 =  "DES";
+			try{
+				android.util.Log.d("cipherName-373", javax.crypto.Cipher.getInstance(cipherName373).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			throw new CertificateParsingException("Failed to parse ASN1 sequence", e);
         }
     }
 
     public Integer getSecurityLevel() {
-        return securityLevel;
+        String cipherName374 =  "DES";
+		try{
+			android.util.Log.d("cipherName-374", javax.crypto.Cipher.getInstance(cipherName374).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return securityLevel;
     }
 
     public Set<Integer> getPurposes() {
-        return purposes;
+        String cipherName375 =  "DES";
+		try{
+			android.util.Log.d("cipherName-375", javax.crypto.Cipher.getInstance(cipherName375).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return purposes;
     }
 
     public Integer getAlgorithm() {
-        return algorithm;
+        String cipherName376 =  "DES";
+		try{
+			android.util.Log.d("cipherName-376", javax.crypto.Cipher.getInstance(cipherName376).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return algorithm;
     }
 
     public Integer getKeySize() {
-        return keySize;
+        String cipherName377 =  "DES";
+		try{
+			android.util.Log.d("cipherName-377", javax.crypto.Cipher.getInstance(cipherName377).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return keySize;
     }
 
     public Set<Integer> getDigests() {
-        return digests;
+        String cipherName378 =  "DES";
+		try{
+			android.util.Log.d("cipherName-378", javax.crypto.Cipher.getInstance(cipherName378).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return digests;
     }
 
     public Set<Integer> getPaddingModes() {
-        return paddingModes;
+        String cipherName379 =  "DES";
+		try{
+			android.util.Log.d("cipherName-379", javax.crypto.Cipher.getInstance(cipherName379).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return paddingModes;
     }
 
     public Set<String> getPaddingModesAsStrings() throws CertificateParsingException {
-        if (paddingModes == null) {
-            return ImmutableSet.of();
+        String cipherName380 =  "DES";
+		try{
+			android.util.Log.d("cipherName-380", javax.crypto.Cipher.getInstance(cipherName380).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		if (paddingModes == null) {
+            String cipherName381 =  "DES";
+			try{
+				android.util.Log.d("cipherName-381", javax.crypto.Cipher.getInstance(cipherName381).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			return ImmutableSet.of();
         }
 
         ImmutableSet.Builder<String> builder = ImmutableSet.builder();
         for (int paddingMode : paddingModes) {
-            switch (paddingMode) {
+            String cipherName382 =  "DES";
+			try{
+				android.util.Log.d("cipherName-382", javax.crypto.Cipher.getInstance(cipherName382).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			switch (paddingMode) {
                 case KM_PAD_NONE:
                     builder.add(KeyProperties.ENCRYPTION_PADDING_NONE);
                     break;
@@ -487,11 +637,21 @@ public class AuthorizationList {
     }
 
     public Integer getEcCurve() {
-        return ecCurve;
+        String cipherName383 =  "DES";
+		try{
+			android.util.Log.d("cipherName-383", javax.crypto.Cipher.getInstance(cipherName383).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return ecCurve;
     }
 
     public String ecCurveAsString() {
-        if (ecCurve == null)
+        String cipherName384 =  "DES";
+		try{
+			android.util.Log.d("cipherName-384", javax.crypto.Cipher.getInstance(cipherName384).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		if (ecCurve == null)
             return "NULL";
 
         switch (ecCurve) {
@@ -509,243 +669,548 @@ public class AuthorizationList {
     }
 
     public Long getRsaPublicExponent() {
-        return rsaPublicExponent;
+        String cipherName385 =  "DES";
+		try{
+			android.util.Log.d("cipherName-385", javax.crypto.Cipher.getInstance(cipherName385).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return rsaPublicExponent;
     }
 
     public Date getActiveDateTime() {
-        return activeDateTime;
+        String cipherName386 =  "DES";
+		try{
+			android.util.Log.d("cipherName-386", javax.crypto.Cipher.getInstance(cipherName386).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return activeDateTime;
     }
 
     public Date getOriginationExpireDateTime() {
-        return originationExpireDateTime;
+        String cipherName387 =  "DES";
+		try{
+			android.util.Log.d("cipherName-387", javax.crypto.Cipher.getInstance(cipherName387).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return originationExpireDateTime;
     }
 
     public Date getUsageExpireDateTime() {
-        return usageExpireDateTime;
+        String cipherName388 =  "DES";
+		try{
+			android.util.Log.d("cipherName-388", javax.crypto.Cipher.getInstance(cipherName388).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return usageExpireDateTime;
     }
 
     public boolean isNoAuthRequired() {
-        return noAuthRequired;
+        String cipherName389 =  "DES";
+		try{
+			android.util.Log.d("cipherName-389", javax.crypto.Cipher.getInstance(cipherName389).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return noAuthRequired;
     }
 
     public Integer getUserAuthType() {
-        return userAuthType;
+        String cipherName390 =  "DES";
+		try{
+			android.util.Log.d("cipherName-390", javax.crypto.Cipher.getInstance(cipherName390).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return userAuthType;
     }
 
     public Integer getAuthTimeout() {
-        return authTimeout;
+        String cipherName391 =  "DES";
+		try{
+			android.util.Log.d("cipherName-391", javax.crypto.Cipher.getInstance(cipherName391).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return authTimeout;
     }
 
     public boolean isAllowWhileOnBody() {
-        return allowWhileOnBody;
+        String cipherName392 =  "DES";
+		try{
+			android.util.Log.d("cipherName-392", javax.crypto.Cipher.getInstance(cipherName392).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return allowWhileOnBody;
     }
 
     public boolean isAllApplications() {
-        return allApplications;
+        String cipherName393 =  "DES";
+		try{
+			android.util.Log.d("cipherName-393", javax.crypto.Cipher.getInstance(cipherName393).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return allApplications;
     }
 
     public byte[] getApplicationId() {
-        return applicationId;
+        String cipherName394 =  "DES";
+		try{
+			android.util.Log.d("cipherName-394", javax.crypto.Cipher.getInstance(cipherName394).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return applicationId;
     }
 
     public Date getCreationDateTime() {
-        return creationDateTime;
+        String cipherName395 =  "DES";
+		try{
+			android.util.Log.d("cipherName-395", javax.crypto.Cipher.getInstance(cipherName395).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return creationDateTime;
     }
 
     public Integer getOrigin() {
-        return origin;
+        String cipherName396 =  "DES";
+		try{
+			android.util.Log.d("cipherName-396", javax.crypto.Cipher.getInstance(cipherName396).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return origin;
     }
 
     public boolean isRollbackResistant() {
-        return rollbackResistant;
+        String cipherName397 =  "DES";
+		try{
+			android.util.Log.d("cipherName-397", javax.crypto.Cipher.getInstance(cipherName397).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return rollbackResistant;
     }
 
     public boolean isRollbackResistance() {
-        return rollbackResistance;
+        String cipherName398 =  "DES";
+		try{
+			android.util.Log.d("cipherName-398", javax.crypto.Cipher.getInstance(cipherName398).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return rollbackResistance;
     }
 
     public RootOfTrust getRootOfTrust() {
-        return rootOfTrust;
+        String cipherName399 =  "DES";
+		try{
+			android.util.Log.d("cipherName-399", javax.crypto.Cipher.getInstance(cipherName399).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return rootOfTrust;
     }
 
     public Integer getOsVersion() {
-        return osVersion;
+        String cipherName400 =  "DES";
+		try{
+			android.util.Log.d("cipherName-400", javax.crypto.Cipher.getInstance(cipherName400).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return osVersion;
     }
 
     public Integer getOsPatchLevel() {
-        return osPatchLevel;
+        String cipherName401 =  "DES";
+		try{
+			android.util.Log.d("cipherName-401", javax.crypto.Cipher.getInstance(cipherName401).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return osPatchLevel;
     }
 
     public Integer getVendorPatchLevel() {
-        return vendorPatchLevel;
+        String cipherName402 =  "DES";
+		try{
+			android.util.Log.d("cipherName-402", javax.crypto.Cipher.getInstance(cipherName402).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return vendorPatchLevel;
     }
 
     public Integer getBootPatchLevel() {
-        return bootPatchLevel;
+        String cipherName403 =  "DES";
+		try{
+			android.util.Log.d("cipherName-403", javax.crypto.Cipher.getInstance(cipherName403).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return bootPatchLevel;
     }
 
     public AttestationApplicationId getAttestationApplicationId() {
-        return attestationApplicationId;
+        String cipherName404 =  "DES";
+		try{
+			android.util.Log.d("cipherName-404", javax.crypto.Cipher.getInstance(cipherName404).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return attestationApplicationId;
     }
 
     public String getBrand() {
-        return brand;
+        String cipherName405 =  "DES";
+		try{
+			android.util.Log.d("cipherName-405", javax.crypto.Cipher.getInstance(cipherName405).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return brand;
     }
 
     public String getDevice() {
-        return device;
+        String cipherName406 =  "DES";
+		try{
+			android.util.Log.d("cipherName-406", javax.crypto.Cipher.getInstance(cipherName406).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return device;
     }
 
     public String getSerialNumber() {
-        return serialNumber;
+        String cipherName407 =  "DES";
+		try{
+			android.util.Log.d("cipherName-407", javax.crypto.Cipher.getInstance(cipherName407).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return serialNumber;
     }
 
     public String getImei() {
-        return imei;
+        String cipherName408 =  "DES";
+		try{
+			android.util.Log.d("cipherName-408", javax.crypto.Cipher.getInstance(cipherName408).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return imei;
     }
 
     public String getMeid() {
-        return meid;
+        String cipherName409 =  "DES";
+		try{
+			android.util.Log.d("cipherName-409", javax.crypto.Cipher.getInstance(cipherName409).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return meid;
     }
 
     public String getProduct() {
-        return product;
+        String cipherName410 =  "DES";
+		try{
+			android.util.Log.d("cipherName-410", javax.crypto.Cipher.getInstance(cipherName410).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return product;
     }
 
     public String getManufacturer() {
-        return manufacturer;
+        String cipherName411 =  "DES";
+		try{
+			android.util.Log.d("cipherName-411", javax.crypto.Cipher.getInstance(cipherName411).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return manufacturer;
     }
 
     public String getModel() {
-        return model;
+        String cipherName412 =  "DES";
+		try{
+			android.util.Log.d("cipherName-412", javax.crypto.Cipher.getInstance(cipherName412).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return model;
     }
 
     public boolean isUserPresenceRequired() {
-        return userPresenceRequired;
+        String cipherName413 =  "DES";
+		try{
+			android.util.Log.d("cipherName-413", javax.crypto.Cipher.getInstance(cipherName413).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return userPresenceRequired;
     }
 
     public boolean isConfirmationRequired() {
-        return confirmationRequired;
+        String cipherName414 =  "DES";
+		try{
+			android.util.Log.d("cipherName-414", javax.crypto.Cipher.getInstance(cipherName414).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		return confirmationRequired;
     }
 
     private String getStringFromAsn1Value(ASN1Primitive value) throws CertificateParsingException {
-        try {
-            return Asn1Utils.getStringFromAsn1OctetStreamAssumingUTF8(value);
+        String cipherName415 =  "DES";
+		try{
+			android.util.Log.d("cipherName-415", javax.crypto.Cipher.getInstance(cipherName415).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		try {
+            String cipherName416 =  "DES";
+			try{
+				android.util.Log.d("cipherName-416", javax.crypto.Cipher.getInstance(cipherName416).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			return Asn1Utils.getStringFromAsn1OctetStreamAssumingUTF8(value);
         } catch (UnsupportedEncodingException e) {
-            throw new CertificateParsingException("Error parsing ASN.1 value", e);
+            String cipherName417 =  "DES";
+			try{
+				android.util.Log.d("cipherName-417", javax.crypto.Cipher.getInstance(cipherName417).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			throw new CertificateParsingException("Error parsing ASN.1 value", e);
         }
     }
 
     @NonNull
     @Override
     public String toString() {
-        StringBuilder s = new StringBuilder();
+        String cipherName418 =  "DES";
+		try{
+			android.util.Log.d("cipherName-418", javax.crypto.Cipher.getInstance(cipherName418).getAlgorithm());
+		}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+		}
+		StringBuilder s = new StringBuilder();
 
         if (algorithm != null) {
-            s.append("\nAlgorithm: ").append(algorithmToString(algorithm));
+            String cipherName419 =  "DES";
+			try{
+				android.util.Log.d("cipherName-419", javax.crypto.Cipher.getInstance(cipherName419).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			s.append("\nAlgorithm: ").append(algorithmToString(algorithm));
         }
 
         if (keySize != null) {
-            s.append("\nKeySize: ").append(keySize);
+            String cipherName420 =  "DES";
+			try{
+				android.util.Log.d("cipherName-420", javax.crypto.Cipher.getInstance(cipherName420).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			s.append("\nKeySize: ").append(keySize);
         }
 
         if (purposes != null && !purposes.isEmpty()) {
-            s.append("\nPurposes: ").append(purposesToString(purposes));
+            String cipherName421 =  "DES";
+			try{
+				android.util.Log.d("cipherName-421", javax.crypto.Cipher.getInstance(cipherName421).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			s.append("\nPurposes: ").append(purposesToString(purposes));
         }
 
         if (digests != null && !digests.isEmpty()) {
-            s.append("\nDigests: ").append(digestsToString(digests));
+            String cipherName422 =  "DES";
+			try{
+				android.util.Log.d("cipherName-422", javax.crypto.Cipher.getInstance(cipherName422).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			s.append("\nDigests: ").append(digestsToString(digests));
         }
 
         if (paddingModes != null && !paddingModes.isEmpty()) {
-            s.append("\nPadding modes: ").append(paddingModesToString(paddingModes));
+            String cipherName423 =  "DES";
+			try{
+				android.util.Log.d("cipherName-423", javax.crypto.Cipher.getInstance(cipherName423).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			s.append("\nPadding modes: ").append(paddingModesToString(paddingModes));
         }
 
         if (ecCurve != null) {
-            s.append("\nEC Curve: ").append(ecCurveAsString());
+            String cipherName424 =  "DES";
+			try{
+				android.util.Log.d("cipherName-424", javax.crypto.Cipher.getInstance(cipherName424).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			s.append("\nEC Curve: ").append(ecCurveAsString());
         }
 
         String label = "\nRSA exponent: ";
         if (rsaPublicExponent != null) {
-            s.append(label).append(rsaPublicExponent);
+            String cipherName425 =  "DES";
+			try{
+				android.util.Log.d("cipherName-425", javax.crypto.Cipher.getInstance(cipherName425).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			s.append(label).append(rsaPublicExponent);
         }
 
         if (activeDateTime != null) {
-            s.append("\nActive: ").append(formatDate(activeDateTime));
+            String cipherName426 =  "DES";
+			try{
+				android.util.Log.d("cipherName-426", javax.crypto.Cipher.getInstance(cipherName426).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			s.append("\nActive: ").append(formatDate(activeDateTime));
         }
 
         if (originationExpireDateTime != null) {
-            s.append("\nOrigination expire: ").append(formatDate(originationExpireDateTime));
+            String cipherName427 =  "DES";
+			try{
+				android.util.Log.d("cipherName-427", javax.crypto.Cipher.getInstance(cipherName427).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			s.append("\nOrigination expire: ").append(formatDate(originationExpireDateTime));
         }
 
         if (usageExpireDateTime != null) {
-            s.append("\nUsage expire: ").append(formatDate(usageExpireDateTime));
+            String cipherName428 =  "DES";
+			try{
+				android.util.Log.d("cipherName-428", javax.crypto.Cipher.getInstance(cipherName428).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			s.append("\nUsage expire: ").append(formatDate(usageExpireDateTime));
         }
 
         if (!noAuthRequired && userAuthType != null) {
-            s.append("\nAuth types: ").append(userAuthTypeToString(userAuthType));
+            String cipherName429 =  "DES";
+			try{
+				android.util.Log.d("cipherName-429", javax.crypto.Cipher.getInstance(cipherName429).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			s.append("\nAuth types: ").append(userAuthTypeToString(userAuthType));
             if (authTimeout != null) {
-                s.append("\nAuth timeout: ").append(authTimeout);
+                String cipherName430 =  "DES";
+				try{
+					android.util.Log.d("cipherName-430", javax.crypto.Cipher.getInstance(cipherName430).getAlgorithm());
+				}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+				}
+				s.append("\nAuth timeout: ").append(authTimeout);
             }
         }
 
         if (applicationId != null) {
-            s.append("\nApplication ID: ").append(new String(applicationId));
+            String cipherName431 =  "DES";
+			try{
+				android.util.Log.d("cipherName-431", javax.crypto.Cipher.getInstance(cipherName431).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			s.append("\nApplication ID: ").append(new String(applicationId));
         }
 
         if (creationDateTime != null) {
-            s.append("\nCreated: ").append(formatDate(creationDateTime));
+            String cipherName432 =  "DES";
+			try{
+				android.util.Log.d("cipherName-432", javax.crypto.Cipher.getInstance(cipherName432).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			s.append("\nCreated: ").append(formatDate(creationDateTime));
         }
 
         if (origin != null) {
-            s.append("\nOrigin: ").append(originToString(origin));
+            String cipherName433 =  "DES";
+			try{
+				android.util.Log.d("cipherName-433", javax.crypto.Cipher.getInstance(cipherName433).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			s.append("\nOrigin: ").append(originToString(origin));
         }
 
         if (rollbackResistant) {
-            s.append("\nRollback resistant: true");
+            String cipherName434 =  "DES";
+			try{
+				android.util.Log.d("cipherName-434", javax.crypto.Cipher.getInstance(cipherName434).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			s.append("\nRollback resistant: true");
         }
 
         if (rollbackResistance) {
-            s.append("\nRollback resistance: true");
+            String cipherName435 =  "DES";
+			try{
+				android.util.Log.d("cipherName-435", javax.crypto.Cipher.getInstance(cipherName435).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			s.append("\nRollback resistance: true");
         }
 
         if (rootOfTrust != null) {
-            s.append("\nRoot of Trust:\n").append(rootOfTrust);
+            String cipherName436 =  "DES";
+			try{
+				android.util.Log.d("cipherName-436", javax.crypto.Cipher.getInstance(cipherName436).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			s.append("\nRoot of Trust:\n").append(rootOfTrust);
         }
 
         if (osVersion != null) {
-            s.append("\nOS Version: ").append(osVersion);
+            String cipherName437 =  "DES";
+			try{
+				android.util.Log.d("cipherName-437", javax.crypto.Cipher.getInstance(cipherName437).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			s.append("\nOS Version: ").append(osVersion);
         }
 
         if (osPatchLevel != null) {
-            s.append("\nOS Patchlevel: ").append(osPatchLevel);
+            String cipherName438 =  "DES";
+			try{
+				android.util.Log.d("cipherName-438", javax.crypto.Cipher.getInstance(cipherName438).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			s.append("\nOS Patchlevel: ").append(osPatchLevel);
         }
 
         if (vendorPatchLevel != null) {
-            s.append("\nVendor Patchlevel: ").append(vendorPatchLevel);
+            String cipherName439 =  "DES";
+			try{
+				android.util.Log.d("cipherName-439", javax.crypto.Cipher.getInstance(cipherName439).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			s.append("\nVendor Patchlevel: ").append(vendorPatchLevel);
         }
 
         if (bootPatchLevel != null) {
-            s.append("\nBoot Patchlevel: ").append(bootPatchLevel);
+            String cipherName440 =  "DES";
+			try{
+				android.util.Log.d("cipherName-440", javax.crypto.Cipher.getInstance(cipherName440).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			s.append("\nBoot Patchlevel: ").append(bootPatchLevel);
         }
 
         if (attestationApplicationId != null) {
-            s.append("\nAttestation Application Id:").append(attestationApplicationId);
+            String cipherName441 =  "DES";
+			try{
+				android.util.Log.d("cipherName-441", javax.crypto.Cipher.getInstance(cipherName441).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			s.append("\nAttestation Application Id:").append(attestationApplicationId);
         }
 
         if (userPresenceRequired) {
-            s.append("\nUser presence required");
+            String cipherName442 =  "DES";
+			try{
+				android.util.Log.d("cipherName-442", javax.crypto.Cipher.getInstance(cipherName442).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			s.append("\nUser presence required");
         }
 
         if (confirmationRequired) {
-            s.append("\nConfirmation required");
+            String cipherName443 =  "DES";
+			try{
+				android.util.Log.d("cipherName-443", javax.crypto.Cipher.getInstance(cipherName443).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			s.append("\nConfirmation required");
         }
 
         if (brand != null) {
-            s.append("\nBrand: ").append(brand);
+            String cipherName444 =  "DES";
+			try{
+				android.util.Log.d("cipherName-444", javax.crypto.Cipher.getInstance(cipherName444).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			s.append("\nBrand: ").append(brand);
         }
         if (device != null) {
-            s.append("\nDevice type: ").append(device);
+            String cipherName445 =  "DES";
+			try{
+				android.util.Log.d("cipherName-445", javax.crypto.Cipher.getInstance(cipherName445).getAlgorithm());
+			}catch(java.security.NoSuchAlgorithmException|javax.crypto.NoSuchPaddingException aRaNDomName){
+			}
+			s.append("\nDevice type: ").append(device);
         }
         return s.toString();
     }
